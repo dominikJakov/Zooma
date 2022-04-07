@@ -103,10 +103,13 @@ class Zoo:
         for employee in self.employees:
             dict[employee.employee_id] = len(employee.animals)
             average += len(employee.animals)
-        max_value = max(dict)
-        min_value = min(dict)
-        average = average / len(self.employees)
-        return [dict[max_value], dict[min_value],average]
+        if len(dict) != 0:
+            max_value = max(dict)
+            min_value = min(dict)
+            average = average / len(self.employees)
+            return {max_value : dict[max_value],min_value : dict[min_value], "Average for all employees" : average}
+        else:
+            return {}
 
     def enclosureCleaningPlan(self):
         self.EnclosureCleaningPlanDic = {}

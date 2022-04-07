@@ -180,16 +180,6 @@ def test_numberOfAnimalsPerSpecies(zoo1, tiger1, tiger2, wolf1,tiger1Clone):
     assert av[wolf1.species_name] == 1
     assert av[tiger2.species_name] == 1
 
-    def employeeStats(self):
-        dict = {}
-        average = 0
-        for employee in self.employees:
-            dict[employee.employee_id] = len(employee.animals)
-            average += len(employee.animals)
-        max_value = max(dict)
-        min_value = min(dict)
-        average = average / len(self.employees)
-        return [dict[max_value], dict[min_value],average]
 
 
 def test_employeeStats(zoo1, employee1, employee2, tiger1,tiger2,wolf1):
@@ -199,9 +189,9 @@ def test_employeeStats(zoo1, employee1, employee2, tiger1,tiger2,wolf1):
     zoo1.addEmployee(employee1)
     zoo1.addEmployee(employee2)
     av = zoo1.employeeStats()
-    assert av[0] == 2
-    assert av[1] == 1
-    assert av[2] == 1.5
+    assert av[employee1.employee_id] == 2
+    assert av[employee2.employee_id] == 1
+    assert av["Average for all employees"] == 1.5
 
 def test_enclosureCleaningPlan(zoo1, enclosure1, enclosure2):
     enclosure1.cleanEnclosure()

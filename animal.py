@@ -10,20 +10,19 @@ class Animal:
         self.enclosure = None
         self.care_taker = None
         self.vet_record = []
-        #self.mother = None
-        # add more as required here 
+
         
-    # simply store the current system time when this method is called    
-    def feed(self): 
+
+    def feed(self): # save the time when animals was feed
         self.feeding_record.append ( datetime.datetime.now())
 
-    def vetCheckup(self):
+    def vetCheckup(self): # save the time when animal had a vet check up
         self.vet_record.append ( datetime.datetime.now())
 
-    def assignEnclosure(self,encl):
+    def assignEnclosure(self,encl): # assign the animal to an enclosure
         if encl != None:
             self.enclosure = encl.enclosure_id
 
-    def assignCareTaker(self,careTaker):
+    def assignCareTaker(self,careTaker): # assign the caretaker to the animal
         self.care_taker = careTaker.employee_id
             

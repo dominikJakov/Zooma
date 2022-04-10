@@ -8,8 +8,8 @@ class Employee:
         self.address = address
         self.animals = []
 
-    def assignAnimal(self,animal):
+    def assignAnimal(self,animal): # assign the animal to the employee
         self.animals.append(animal)
 
-    def removeAnimal(self, animal):
+    def removeAnimal(self, animal): # remove the animal from the employee
         self.animals.remove(animal)

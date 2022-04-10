@@ -12,51 +12,51 @@ class Zoo:
         self.AnimalMedicalPlanDic = {}
         self.AnimalFeedingPlanDic = {}
 
-    def addAnimal(self, animal):
+    def addAnimal(self, animal): # add animal to the zoo
         self.animals.append (animal)
 
-    def addEmployee(self, employee):
+    def addEmployee(self, employee):# add an employee to the zoo
         self.employees.append (employee)
 
-    def removeAnimal(self, animal):
+    def removeAnimal(self, animal): # remove an animal from the zoo
         if animal.enclosure != None:
             animal.enclosure.removeAnimal(animal)
         self.animals.remove(animal)
 
-    def getAnimal(self, animal_id):
+    def getAnimal(self, animal_id): # get the animal
         for animal in self.animals:
             if animal.animal_id == animal_id:
                 return animal
 
-    def addEnclosure(self, enclosure):
+    def addEnclosure(self, enclosure): # add an enclosure to the zoo
         self.enclosures.append (enclosure)
 
-    def getEnclosure(self, enclosure_id):
+    def getEnclosure(self, enclosure_id): # get an enclosure from the zoo
         for enclosure in self.enclosures:
             if enclosure.enclosure_id == enclosure_id:
                 return enclosure
         return None
 
-    def getEmployee(self, employee_id):
+    def getEmployee(self, employee_id): # get an employee from the zoo
         for employee in self.employees:
             if employee.employee_id == employee_id:
                 return employee
         return None
 
-    def averageNumOfAnimalsPerEnclosure(self):
+    def averageNumOfAnimalsPerEnclosure(self): # average number of animal per enclosure
         if len(self.animals) != 0:
             return len(self.enclosures) / len(self.animals)
         else:
             return 0
 
-    def enclosureWithMultipleSpecies(self):
+    def enclosureWithMultipleSpecies(self): # return number of enclosure with multiple species
         count = 0
         for enclosure in self.enclosures:
             if not enclosure.haveMultipleSpecies():
                 count += 1
         return count
 
-    def availableSpace(self):
+    def availableSpace(self): # return a json with avaliable space for every enclosure
         dict = {}
         for enclosure in self.enclosures:
             if len(enclosure.animals) != 0:
@@ -65,7 +65,7 @@ class Zoo:
                 dict[enclosure.enclosure_id] = enclosure.area
         return dict
 
-    def removeEnclosure(self, enclosure):
+    def removeEnclosure(self, enclosure): # remove an enclosure from the zoo
         animals = []
         for animal in enclosure.animals:
             animals.append(animal)
@@ -76,7 +76,7 @@ class Zoo:
                 newEnclusre.addAnimal(animal)
                 animal.assignEnclosure(newEnclusre)
 
-    def removeEmployee(self, employee):
+    def removeEmployee(self, employee): # remove an employee from the zoo
         animals = []
         for animal in employee.animals:
             animals.append(animal)
@@ -88,7 +88,7 @@ class Zoo:
                 animal.assignCareTaker(newEmployee)
 
 
-    def numberOfAnimalsPerSpecies(self):
+    def numberOfAnimalsPerSpecies(self): # return a json with count for every animal
         dict = {}
         for animal in self.animals:
             if animal.species_name in dict.keys():
@@ -97,7 +97,7 @@ class Zoo:
                 dict[animal.species_name] = 1
         return dict
 
-    def employeeStats(self):
+    def employeeStats(self): # return employess with minimal and maximum number of animals and the average
         dict = {}
         average = 0
         for employee in self.employees:
@@ -111,7 +111,7 @@ class Zoo:
         else:
             return {}
 
-    def enclosureCleaningPlan(self):
+    def enclosureCleaningPlan(self): # return the cleaning plan
         self.EnclosureCleaningPlanDic = {}
         for enclosure in self.enclosures:
             if len(enclosure.clean_records) > 0:
@@ -122,7 +122,7 @@ class Zoo:
             nextRecord = f"{lastRecord.year} - {lastRecord.month} - {lastRecord.day}"
             self.EnclosureCleaningPlanDic[enclosure.enclosure_id] = nextRecord
 
-    def animalMedicalPlan(self):
+    def animalMedicalPlan(self): # return the animal medical plan
         AnimalMedicalPlanDic = {}
         for animal in self.animals:
             if len(animal.vet_record) > 0:
@@ -132,7 +132,7 @@ class Zoo:
             nextRecord = f"{lastRecord.year} - {lastRecord.month} - {lastRecord.day}"
             self.AnimalMedicalPlanDic[animal.animal_id] = nextRecord
 
-    def animalFeedingPlan(self):
+    def animalFeedingPlan(self): # return the feeding plan
         AnimalFeedingPlanDic = {}
         for animal in self.animals:
             if len(animal.feeding_record) > 0:

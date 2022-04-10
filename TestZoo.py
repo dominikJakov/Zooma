@@ -214,11 +214,3 @@ def test_animalFeedingPlan(zoo1, tiger1, tiger2):
     zoo1.animalFeedingPlan()
     assert len(zoo1.AnimalFeedingPlanDic) == 2
 
-
-class Testzoo():
-    pass
-    # def test_one(self, baseURL, post_tiger1):
-    #     x = requests.get (baseURL+"/animals")
-    #     js =  x.content
-    #     animals = json.loads(js)
-    #     assert (len(animals)==1)
